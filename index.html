@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
@@ -225,11 +225,11 @@
 
     .intro-slide {
       height: calc(100vh - 74px);
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      align-items: center;
+      width: 100%;
       position: relative;
       overflow: hidden;
+      display: flex;
+      align-items: center;
     }
 
     .intro-slide::before {
@@ -243,9 +243,20 @@
       pointer-events: none;
     }
 
+    .intro-slide-inner {
+      width: min(80%, var(--content-max-width));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+      height: 100%;
+    }
+
     .intro-agenda-col {
       order: 2;
-      padding: 0 3.5rem 0 2.5rem;
+      padding: 0 0 0 2.5rem;
       border-left: 1px solid var(--border-color);
       position: relative;
       z-index: 1;
@@ -343,7 +354,7 @@
 
     .intro-title-col {
       order: 1;
-      padding: 0 2.5rem 0 3.5rem;
+      padding: 0 2.5rem 0 0;
       position: relative;
       z-index: 1;
     }
@@ -404,14 +415,13 @@
       margin: 65px auto;
       border: 0;
       height: 1px;
-      background: linear-gradient(90deg, 
-        transparent 0%, 
-        var(--border-accent) 15%, 
-        var(--border-color) 35%, 
-        var(--border-color) 65%, 
-        var(--border-accent) 85%, 
-        transparent 100%
-      );
+      background: linear-gradient(90deg,
+          transparent 0%,
+          var(--border-accent) 15%,
+          var(--border-color) 35%,
+          var(--border-color) 65%,
+          var(--border-accent) 85%,
+          transparent 100%);
       opacity: 0.85;
       display: block;
     }
@@ -1751,7 +1761,8 @@
       box-sizing: border-box;
       width: 100%;
     }
-      padding: 1.5rem 3.5rem 3.5rem;
+
+    padding: 1.5rem 3.5rem 3.5rem;
     }
 
     .front-card {
@@ -5337,7 +5348,7 @@
       padding: var(--space-xl) var(--page-padding) var(--space-sm);
       text-align: center;
       box-sizing: border-box;
-      width: min(90%, var(--content-max-width-wide));
+      width: 90%;
     }
 
     .map-eyebrow {
@@ -5363,7 +5374,7 @@
       margin: 0 auto;
       padding: 0 var(--page-padding) 4rem;
       box-sizing: border-box;
-      width: min(90%, var(--content-max-width-wide));
+      width: 90%;
     }
 
     /* Top matrix — business/domain capability groups */
@@ -5505,7 +5516,7 @@
       justify-content: center;
       gap: 1.5rem;
       box-sizing: border-box;
-      width: min(90%, var(--content-max-width-wide));
+      width: 90%;
     }
 
     .map-legend-item {
@@ -6048,66 +6059,68 @@
        ========================================================================== -->
   <section id="view-intro" class="tab-content active">
     <div class="intro-slide">
-      <div class="intro-agenda-col">
-        <div class="agenda-kicker">O que vamos discutir hoje</div>
-        <h2 class="agenda-heading">Agenda da Reunião</h2>
+      <div class="intro-slide-inner">
+        <div class="intro-agenda-col">
+          <div class="agenda-kicker">O que vamos discutir hoje</div>
+          <h2 class="agenda-heading">Agenda da Reunião</h2>
 
-        <div class="agenda-list">
-          <div class="agenda-row" onclick="switchTab('automation')">
-            <span class="agenda-idx">01</span>
-            <div class="agenda-body">
-              <div class="agenda-name">Automation Suite</div>
-              <div class="agenda-time">Horizon Automation Suite · Flow | Connect | Relay | AI</div>
+          <div class="agenda-list">
+            <div class="agenda-row" onclick="switchTab('automation')">
+              <span class="agenda-idx">01</span>
+              <div class="agenda-body">
+                <div class="agenda-name">Automation Suite</div>
+                <div class="agenda-time">Flow | Connect | Relay | AI</div>
+              </div>
+              <span class="agenda-arrow">→</span>
             </div>
-            <span class="agenda-arrow">→</span>
-          </div>
 
-          <div class="agenda-row" onclick="switchTab('demand')">
-            <span class="agenda-idx">02</span>
-            <div class="agenda-body">
-              <div class="agenda-name">Aoop Squad Management</div>
-              <div class="agenda-time">Estratégia à Execução</div>
+            <div class="agenda-row" onclick="switchTab('demand')">
+              <span class="agenda-idx">02</span>
+              <div class="agenda-body">
+                <div class="agenda-name">Aoop Squad Management</div>
+                <div class="agenda-time">Da estratégia à execução</div>
+              </div>
+              <span class="agenda-arrow">→</span>
             </div>
-            <span class="agenda-arrow">→</span>
-          </div>
 
-          <div class="agenda-row" onclick="switchTab('coe')">
-            <span class="agenda-idx">03</span>
-            <div class="agenda-body">
-              <div class="agenda-name">Capability Map</div>
-              <div class="agenda-time">Arquitetura & Valor</div>
+            <div class="agenda-row" onclick="switchTab('coe')">
+              <span class="agenda-idx">03</span>
+              <div class="agenda-body">
+                <div class="agenda-name">Capability Map</div>
+                <div class="agenda-time">Visão 360 da plataforma</div>
+              </div>
+              <span class="agenda-arrow">→</span>
             </div>
-            <span class="agenda-arrow">→</span>
-          </div>
 
-          <div class="agenda-row" onclick="switchTab('review')">
-            <span class="agenda-idx">04</span>
-            <div class="agenda-body">
-              <div class="agenda-name">Review</div>
-              <div class="agenda-time">Visão Integrada</div>
+            <div class="agenda-row" onclick="switchTab('review')">
+              <span class="agenda-idx">04</span>
+              <div class="agenda-body">
+                <div class="agenda-name">Review</div>
+                <div class="agenda-time">Visão integrada</div>
+              </div>
+              <span class="agenda-arrow">→</span>
             </div>
-            <span class="agenda-arrow">→</span>
-          </div>
 
-          <div class="agenda-row" onclick="switchTab('roadmap')">
-            <span class="agenda-idx">05</span>
-            <div class="agenda-body">
-              <div class="agenda-name">Próximos Passos</div>
-              <div class="agenda-time">Jornada de Execução 2027</div>
+            <div class="agenda-row" onclick="switchTab('roadmap')">
+              <span class="agenda-idx">05</span>
+              <div class="agenda-body">
+                <div class="agenda-name">Próximos Passos</div>
+                <div class="agenda-time">Jornada ao sucesso</div>
+              </div>
+              <span class="agenda-arrow">→</span>
             </div>
-            <span class="agenda-arrow">→</span>
           </div>
         </div>
-      </div>
 
-      <div class="intro-title-col">
-        <img src="aoop.png" alt="Aoop" class="intro-logo-img">
-        <span class="intro-eyebrow">Proposta Estratégica de Governança</span>
-        <h1 class="intro-title">Platform<br><span>Intelligence</span></h1>
-        <p class="intro-subtitle">
-          Uma nova forma de enxergar, decidir e evoluir a sua plataforma ServiceNow — unindo automação, demanda e
-          arquitetura em uma única camada de inteligência para o negócio.
-        </p>
+        <div class="intro-title-col">
+          <img src="aoop.png" alt="Aoop" class="intro-logo-img">
+          <span class="intro-eyebrow">Proposta Estratégica de Governança</span>
+          <h1 class="intro-title">Platform<br><span>Intelligence</span></h1>
+          <p class="intro-subtitle">
+            Uma nova forma de enxergar, decidir e evoluir a sua plataforma ServiceNow — unindo automação, demanda e
+            arquitetura em uma única camada de inteligência para o negócio.
+          </p>
+        </div>
       </div>
     </div>
   </section>
@@ -6333,145 +6346,9 @@
 
       <hr class="section-divider">
 
-      <!-- BLOCO 04 — RESULTADO EXECUTIVO -->
+      <!-- BLOCO 04 — ESCALA COMPROVADA -->
       <div class="auto-exec-block">
-        <div class="auto-exec-eyebrow">04 · RESULTADO EXECUTIVO CONSOLIDADO</div>
-        <h2 class="auto-exec-title">O Automation Suite transforma automação em um <span>ativo gerenciável</span>.</h2>
-
-        <div class="auto-exec-formula-card">
-          <div class="auto-exec-formula-items">
-            <div class="auto-exec-formula-item">
-              <div class="auto-exec-formula-item-name">FLOW</div>
-              <div class="auto-exec-formula-item-sub">Resiliência</div>
-            </div>
-            <span class="auto-exec-formula-plus">+</span>
-            <div class="auto-exec-formula-item">
-              <div class="auto-exec-formula-item-name">CONNECT</div>
-              <div class="auto-exec-formula-item-sub">Eficiência</div>
-            </div>
-            <span class="auto-exec-formula-plus">+</span>
-            <div class="auto-exec-formula-item">
-              <div class="auto-exec-formula-item-name">RELAY</div>
-              <div class="auto-exec-formula-item-sub">Ecossistema</div>
-            </div>
-            <span class="auto-exec-formula-plus">+</span>
-            <div class="auto-exec-formula-item">
-              <div class="auto-exec-formula-item-name">AI</div>
-              <div class="auto-exec-formula-item-sub">Inteligência</div>
-            </div>
-          </div>
-
-          <div class="auto-exec-formula-arrow">↓</div>
-
-          <div class="auto-exec-formula-banner">
-            GOVERNANÇA + OBSERVABILIDADE + VALOR
-          </div>
-          <div class="auto-exec-formula-sub">
-            Uma operação de automação mais previsível, sustentável e orientada a resultado.
-          </div>
-        </div>
-
-        <!-- 4 OUTCOMES EXECUTIVOS -->
-        <div class="auto-exec-outcomes-grid">
-          <div class="auto-exec-outcome-card">
-            <div class="auto-exec-outcome-icon">👁️</div>
-            <div class="auto-exec-outcome-title">CONTROLAR</div>
-            <div class="auto-exec-outcome-desc">Visibilidade sobre o ecossistema de automação.</div>
-          </div>
-          <div class="auto-exec-outcome-card">
-            <div class="auto-exec-outcome-icon">🛡️</div>
-            <div class="auto-exec-outcome-title">ANTECIPAR</div>
-            <div class="auto-exec-outcome-desc">Identificação de falhas e riscos antes do impacto.</div>
-          </div>
-          <div class="auto-exec-outcome-card">
-            <div class="auto-exec-outcome-icon">📊</div>
-            <div class="auto-exec-outcome-title">MENSURAR</div>
-            <div class="auto-exec-outcome-desc">Eficiência, consumo e valor gerado.</div>
-          </div>
-          <div class="auto-exec-outcome-card">
-            <div class="auto-exec-outcome-icon">🚀</div>
-            <div class="auto-exec-outcome-title">ESCALAR</div>
-            <div class="auto-exec-outcome-desc">Padrões reutilizáveis para crescimento sustentável.</div>
-          </div>
-        </div>
-      </div>
-
-      <hr class="section-divider">
-
-      <!-- BLOCO 05 — ARQUITETURA CONCEITUAL -->
-      <div class="auto-exec-block">
-        <div class="auto-exec-eyebrow">05 · ARQUITETURA CONCEITUAL</div>
-        <h2 class="auto-exec-title">Ciclo Completo de <span>Atendimento</span></h2>
-        <p class="auto-exec-lead">
-          Arquitetura de conexões ao redor da Requisição central e seus pilares estratégicos.
-        </p>
-
-        <div class="center-req-section" style="margin-top: 0; padding: 0; background: transparent; border: none;">
-          <div class="req-hub-layout">
-            <!-- LADO ESQUERDO: HORIZON FLOW & HORIZON CONNECT -->
-            <div class="req-side-col">
-              <div class="req-node-card">
-                <h3 class="req-node-title">Horizon Flow</h3>
-                <div class="satellite-tags-wrap">
-                  <span class="satellite-tag">SLA</span>
-                  <span class="satellite-tag">Grupo solucionador</span>
-                  <span class="satellite-tag">Eficiência</span>
-                  <span class="satellite-tag">Volumetria</span>
-                  <span class="satellite-tag">Valor agregado</span>
-                  <span class="satellite-tag">Business Unit</span>
-                </div>
-              </div>
-
-              <div class="req-node-card">
-                <h3 class="req-node-title">Horizon Connect</h3>
-                <div class="satellite-tags-wrap">
-                  <span class="satellite-tag">APIs</span>
-                  <span class="satellite-tag">Qualidade de conexão</span>
-                  <span class="satellite-tag">Ownerships</span>
-                  <span class="satellite-tag">Suporte</span>
-                  <span class="satellite-tag">Continuidade</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- CENTRO: REQUISIÇÃO -->
-            <div class="req-center-hub">
-              <div class="req-center-title">Requisição</div>
-            </div>
-
-            <!-- LADO DIREITO: HORIZON RELAY & HORIZON AI -->
-            <div class="req-side-col">
-              <div class="req-node-card">
-                <h3 class="req-node-title">Horizon Relay</h3>
-                <div class="satellite-tags-wrap">
-                  <span class="satellite-tag">RPAs</span>
-                  <span class="satellite-tag">Controle de dados</span>
-                  <span class="satellite-tag">Visibilidade end to end</span>
-                  <span class="satellite-tag">Eficácia</span>
-                  <span class="satellite-tag">Arquitetura saudável</span>
-                </div>
-              </div>
-
-              <div class="req-node-card">
-                <h3 class="req-node-title">Horizon AI</h3>
-                <div class="satellite-tags-wrap">
-                  <span class="satellite-tag">GenAI</span>
-                  <span class="satellite-tag">Asimov</span>
-                  <span class="satellite-tag">Auto atendimento</span>
-                  <span class="satellite-tag">Base de conhecimento</span>
-                  <span class="satellite-tag">OCR</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <hr class="section-divider">
-
-      <!-- BLOCO 06 — ESCALA COMPROVADA -->
-      <div class="auto-exec-block" style="margin-bottom: 0;">
-        <div class="auto-exec-eyebrow">06 · ESCALA COMPROVADA</div>
+        <div class="auto-exec-eyebrow">04 · ESCALA COMPROVADA</div>
         <h2 class="auto-exec-title">Resultados Comprovados em <span>Produção</span></h2>
         <p class="auto-exec-lead">
           Indicadores reais de volume, automação e impacto gerados pela operação.
@@ -6560,6 +6437,71 @@
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="section-divider">
+
+      <!-- BLOCO 05 — RESULTADO EXECUTIVO -->
+      <div class="auto-exec-block" style="margin-bottom: 0;">
+        <div class="auto-exec-eyebrow">05 · RESULTADO EXECUTIVO CONSOLIDADO</div>
+        <h2 class="auto-exec-title">O Automation Suite transforma automação em um <span>ativo gerenciável</span>.</h2>
+
+        <div class="auto-exec-formula-card">
+          <div class="auto-exec-formula-items">
+            <div class="auto-exec-formula-item">
+              <div class="auto-exec-formula-item-name">FLOW</div>
+              <div class="auto-exec-formula-item-sub">Resiliência</div>
+            </div>
+            <span class="auto-exec-formula-plus">+</span>
+            <div class="auto-exec-formula-item">
+              <div class="auto-exec-formula-item-name">CONNECT</div>
+              <div class="auto-exec-formula-item-sub">Eficiência</div>
+            </div>
+            <span class="auto-exec-formula-plus">+</span>
+            <div class="auto-exec-formula-item">
+              <div class="auto-exec-formula-item-name">RELAY</div>
+              <div class="auto-exec-formula-item-sub">Ecossistema</div>
+            </div>
+            <span class="auto-exec-formula-plus">+</span>
+            <div class="auto-exec-formula-item">
+              <div class="auto-exec-formula-item-name">AI</div>
+              <div class="auto-exec-formula-item-sub">Inteligência</div>
+            </div>
+          </div>
+
+          <div class="auto-exec-formula-arrow">↓</div>
+
+          <div class="auto-exec-formula-banner">
+            GOVERNANÇA + OBSERVABILIDADE + VALOR
+          </div>
+          <div class="auto-exec-formula-sub">
+            Uma operação de automação mais previsível, sustentável e orientada a resultado.
+          </div>
+        </div>
+
+        <!-- 4 OUTCOMES EXECUTIVOS -->
+        <div class="auto-exec-outcomes-grid">
+          <div class="auto-exec-outcome-card">
+            <div class="auto-exec-outcome-icon">👁️</div>
+            <div class="auto-exec-outcome-title">CONTROLAR</div>
+            <div class="auto-exec-outcome-desc">Visibilidade sobre o ecossistema de automação.</div>
+          </div>
+          <div class="auto-exec-outcome-card">
+            <div class="auto-exec-outcome-icon">🛡️</div>
+            <div class="auto-exec-outcome-title">ANTECIPAR</div>
+            <div class="auto-exec-outcome-desc">Identificação de falhas e riscos antes do impacto.</div>
+          </div>
+          <div class="auto-exec-outcome-card">
+            <div class="auto-exec-outcome-icon">📊</div>
+            <div class="auto-exec-outcome-title">MENSURAR</div>
+            <div class="auto-exec-outcome-desc">Eficiência, consumo e valor gerado.</div>
+          </div>
+          <div class="auto-exec-outcome-card">
+            <div class="auto-exec-outcome-icon">🚀</div>
+            <div class="auto-exec-outcome-title">ESCALAR</div>
+            <div class="auto-exec-outcome-desc">Padrões reutilizáveis para crescimento sustentável.</div>
           </div>
         </div>
       </div>
@@ -8411,8 +8353,7 @@
            ========================================================================== -->
       <div class="auto-exec-block" id="demand-exec-block-2" style="margin-bottom: 4.5rem;">
         <div style="text-align: left; margin-bottom: 2rem;">
-          <div class="auto-exec-eyebrow"
-  >
+          <div class="auto-exec-eyebrow">
             A SOLUÇÃO PROPOSTA
           </div>
           <h2 class="auto-exec-title">
@@ -8435,7 +8376,9 @@
                 style="font-size: 0.72rem; font-weight: 900; color: var(--aoop-blue); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 0.5rem;">
                 MODELO DE TRABALHO
               </div>
-              <h3 style="font-size: 1.6rem; font-weight: 900; color: var(--text-main); margin-bottom: 0.4rem; width: 100%;">ASM
+              <h3
+                style="font-size: 1.6rem; font-weight: 900; color: var(--text-main); margin-bottom: 0.4rem; width: 100%;">
+                ASM
                 Framework</h3>
               <h4
                 style="font-size: 0.95rem; font-weight: 800; color: var(--aoop-yellow); margin-bottom: 0.85rem; width: 100%;">
@@ -8491,7 +8434,8 @@
                 style="font-size: 0.72rem; font-weight: 900; color: var(--aoop-yellow); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 0.5rem;">
                 APLICAÇÃO DE GESTÃO
               </div>
-              <h3 style="font-size: 1.6rem; font-weight: 900; color: var(--text-main); margin-bottom: 0.4rem; width: 100%;">
+              <h3
+                style="font-size: 1.6rem; font-weight: 900; color: var(--text-main); margin-bottom: 0.4rem; width: 100%;">
                 SStudio</h3>
               <h4 style="font-size: 0.95rem; font-weight: 800; color: #34d399; margin-bottom: 0.85rem; width: 100%;">
                 Coloca o framework em prática.</h4>
@@ -8567,8 +8511,7 @@
            03 — APRESENTAR A TRANSFORMAÇÃO
            ========================================================================== -->
       <div class="auto-exec-block" id="demand-exec-block-3" style="margin-bottom: 4.5rem;">
-        <div class="auto-exec-eyebrow"
->
+        <div class="auto-exec-eyebrow">
           TRANSFORMAÇÃO DO MODELO
         </div>
         <h2 class="auto-exec-title">
@@ -8587,7 +8530,8 @@
               style="flex: 1; min-width: 130px; background: rgba(8, 17, 30, 0.9); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1rem; text-align: center;">
               <div class="dm-chain-num"
                 style="font-size: 0.75rem; font-weight: 900; color: var(--aoop-blue); margin-bottom: 0.25rem;">01</div>
-              <div class="dm-chain-name" style="font-size: 0.85rem; font-weight: 900; color: var(--text-main);">ESTRATÉGIA</div>
+              <div class="dm-chain-name" style="font-size: 0.85rem; font-weight: 900; color: var(--text-main);">
+                ESTRATÉGIA</div>
               <div class="dm-chain-sub" style="font-size: 0.72rem; color: var(--text-muted); margin-top: 0.25rem;">Metas
                 &amp; OKRs</div>
             </div>
@@ -8599,7 +8543,8 @@
               style="flex: 1; min-width: 130px; background: rgba(8, 17, 30, 0.9); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1rem; text-align: center;">
               <div class="dm-chain-num"
                 style="font-size: 0.75rem; font-weight: 900; color: var(--aoop-blue); margin-bottom: 0.25rem;">02</div>
-              <div class="dm-chain-name" style="font-size: 0.85rem; font-weight: 900; color: var(--text-main);">INVESTIMENTO
+              <div class="dm-chain-name" style="font-size: 0.85rem; font-weight: 900; color: var(--text-main);">
+                INVESTIMENTO
               </div>
               <div class="dm-chain-sub" style="font-size: 0.72rem; color: var(--text-muted); margin-top: 0.25rem;">
                 Projects &amp; Challenges</div>
@@ -8612,7 +8557,8 @@
               style="flex: 1; min-width: 130px; background: rgba(8, 17, 30, 0.9); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1rem; text-align: center;">
               <div class="dm-chain-num"
                 style="font-size: 0.75rem; font-weight: 900; color: var(--aoop-blue); margin-bottom: 0.25rem;">03</div>
-              <div class="dm-chain-name" style="font-size: 0.85rem; font-weight: 900; color: var(--text-main);">PRIORIZAÇÃO</div>
+              <div class="dm-chain-name" style="font-size: 0.85rem; font-weight: 900; color: var(--text-main);">
+                PRIORIZAÇÃO</div>
               <div class="dm-chain-sub" style="font-size: 0.72rem; color: var(--text-muted); margin-top: 0.25rem;">NOW ·
                 NEXT · LATER</div>
             </div>
@@ -8624,7 +8570,8 @@
               style="flex: 1; min-width: 130px; background: rgba(8, 17, 30, 0.9); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1rem; text-align: center;">
               <div class="dm-chain-num"
                 style="font-size: 0.75rem; font-weight: 900; color: var(--aoop-blue); margin-bottom: 0.25rem;">04</div>
-              <div class="dm-chain-name" style="font-size: 0.85rem; font-weight: 900; color: var(--text-main);">PLANEJAMENTO
+              <div class="dm-chain-name" style="font-size: 0.85rem; font-weight: 900; color: var(--text-main);">
+                PLANEJAMENTO
               </div>
               <div class="dm-chain-sub" style="font-size: 0.72rem; color: var(--text-muted); margin-top: 0.25rem;">
                 Timeline &amp; Capacity</div>
@@ -8637,7 +8584,8 @@
               style="flex: 1; min-width: 130px; background: rgba(8, 17, 30, 0.9); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1rem; text-align: center;">
               <div class="dm-chain-num"
                 style="font-size: 0.75rem; font-weight: 900; color: var(--aoop-blue); margin-bottom: 0.25rem;">05</div>
-              <div class="dm-chain-name" style="font-size: 0.85rem; font-weight: 900; color: var(--text-main);">DELIVERY</div>
+              <div class="dm-chain-name" style="font-size: 0.85rem; font-weight: 900; color: var(--text-main);">DELIVERY
+              </div>
               <div class="dm-chain-sub" style="font-size: 0.72rem; color: var(--text-muted); margin-top: 0.25rem;">
                 Features · Problems · Technical Debt</div>
             </div>
@@ -8649,7 +8597,8 @@
               style="flex: 1; min-width: 130px; background: rgba(8, 17, 30, 0.9); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1rem; text-align: center;">
               <div class="dm-chain-num"
                 style="font-size: 0.75rem; font-weight: 900; color: var(--aoop-blue); margin-bottom: 0.25rem;">06</div>
-              <div class="dm-chain-name" style="font-size: 0.85rem; font-weight: 900; color: var(--text-main);">EXECUÇÃO</div>
+              <div class="dm-chain-name" style="font-size: 0.85rem; font-weight: 900; color: var(--text-main);">EXECUÇÃO
+              </div>
               <div class="dm-chain-sub" style="font-size: 0.72rem; color: var(--text-muted); margin-top: 0.25rem;">Work
                 Items</div>
             </div>
@@ -8662,7 +8611,8 @@
               style="flex: 1.2; min-width: 140px; background: linear-gradient(135deg, rgba(245, 177, 17, 0.25) 0%, rgba(10, 18, 29, 0.95) 100%); border: 2px solid var(--aoop-yellow); border-radius: 12px; padding: 1rem; text-align: center; box-shadow: 0 0 20px rgba(245,177,17,0.3);">
               <div class="dm-chain-num"
                 style="font-size: 0.8rem; font-weight: 900; color: var(--aoop-yellow); margin-bottom: 0.25rem;">07</div>
-              <div class="dm-chain-name" style="font-size: 0.95rem; font-weight: 900; color: var(--text-main);">RESULTADO</div>
+              <div class="dm-chain-name" style="font-size: 0.95rem; font-weight: 900; color: var(--text-main);">
+                RESULTADO</div>
               <div class="dm-chain-sub"
                 style="font-size: 0.75rem; font-weight: 800; color: var(--aoop-yellow); margin-top: 0.25rem;">Valor ·
                 Prazo · Qualidade</div>
@@ -8682,8 +8632,7 @@
            04 — MOSTRAR OS TRÊS NÍVEIS DE DECISÃO
            ========================================================================== -->
       <div class="auto-exec-block" id="demand-exec-block-4" style="margin-bottom: 4.5rem;">
-        <div class="auto-exec-eyebrow"
->
+        <div class="auto-exec-eyebrow">
           NÍVEIS DE GOVERNANÇA
         </div>
         <h2 class="auto-exec-title">
@@ -8807,8 +8756,7 @@
            05 — O QUE MUDA PARA A LIDERANÇA
            ========================================================================== -->
       <div class="auto-exec-block" id="demand-exec-block-5" style="margin-bottom: 4.5rem;">
-        <div class="auto-exec-eyebrow"
->
+        <div class="auto-exec-eyebrow">
           IMPACTO DE GESTÃO
         </div>
         <h2 class="auto-exec-title">
@@ -8942,8 +8890,7 @@
            06 — RESULTADO EXECUTIVO
            ========================================================================== -->
       <div class="auto-exec-block" id="demand-exec-block-6" style="margin-bottom: 4.5rem;">
-        <div class="auto-exec-eyebrow"
->
+        <div class="auto-exec-eyebrow">
           VALOR ESTRATÉGICO
         </div>
         <h2 class="auto-exec-title">
@@ -9142,7 +9089,9 @@
               style="font-size: 0.72rem; font-weight: 900; color: var(--aoop-blue); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.4rem;">
               <i class="ph ph-lightning"></i> IMPACTO
             </div>
-            <h4 style="font-size: 0.95rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.4rem; width: 100%;">Quais
+            <h4
+              style="font-size: 0.95rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.4rem; width: 100%;">
+              Quais
               partes da plataforma estão sendo afetadas?</h4>
             <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; margin: 0;">
               Relacionar demandas, problemas e entregas às applications, services e capabilities correspondentes.
@@ -9155,7 +9104,9 @@
               style="font-size: 0.72rem; font-weight: 900; color: var(--aoop-yellow); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.4rem;">
               <i class="ph ph-tree-structure"></i> RASTREABILIDADE
             </div>
-            <h4 style="font-size: 0.95rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.4rem; width: 100%;">Por
+            <h4
+              style="font-size: 0.95rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.4rem; width: 100%;">
+              Por
               que uma capability está mudando?</h4>
             <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; margin: 0;">
               Permitir navegar da capability até os Projects, Challenges, Incidents, Features e Work Items relacionados.
@@ -9168,7 +9119,9 @@
               style="font-size: 0.72rem; font-weight: 900; color: #34d399; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.4rem;">
               <i class="ph ph-eye"></i> VISÃO CONSOLIDADA
             </div>
-            <h4 style="font-size: 0.95rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.4rem; width: 100%;">O que
+            <h4
+              style="font-size: 0.95rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.4rem; width: 100%;">
+              O que
               está acontecendo em cada área da plataforma?</h4>
             <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; margin: 0;">
               Consolidar evolução, incidentes, débito técnico e iniciativas em uma única visão.
@@ -9203,7 +9156,7 @@
 
     </div>
 
-      <hr class="section-divider">
+    <hr class="section-divider">
 
     <!-- ==========================================================================
        2. CAMADA DE DEMONSTRAÇÃO — COMO ISSO FUNCIONA? (BOARDS & EVIDÊNCIAS TÉCNICAS)
@@ -9211,7 +9164,8 @@
     <div id="demand-demo-layer" class="auto-demo-layer">
 
       <!-- TITULO DA DEMONSTRAÇÃO -->
-      <div class="section-header" style="width: min(90%, var(--content-max-width)); margin-left: auto; margin-right: auto; padding-top: var(--space-md); margin-bottom: var(--space-lg); text-align: center;">
+      <div class="section-header"
+        style="width: min(90%, var(--content-max-width)); margin-left: auto; margin-right: auto; padding-top: var(--space-md); margin-bottom: var(--space-lg); text-align: center;">
         <div
           style="font-size: var(--font-size-eyebrow); font-weight: 800; color: var(--aoop-yellow); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: var(--space-xs);">
           · DEMO ·
@@ -10356,30 +10310,27 @@
            01 — ABERTURA
            ========================================================================== -->
       <div class="auto-exec-block" id="coe-exec-block-1" style="margin-bottom: 4.5rem;">
-        <div style="text-align: center; margin-bottom: 2rem;">
-          <div class="auto-exec-eyebrow auto-exec-eyebrow--center">
+        <div style="text-align: left; margin-bottom: 2rem;">
+          <div class="auto-exec-eyebrow">
             PLATFORM INTELLIGENCE · PLATFORM VIEW
           </div>
-          <h1 class="auto-exec-title auto-exec-title--center">
+          <h1 class="auto-exec-title">
             Capability Map</h1>
           <h2
-            style="font-size: var(--font-size-h3); font-weight: 800; color: var(--aoop-blue); margin-bottom: 1.25rem; width: 100%; max-width: 100%; display: block; text-align: center;">
+            style="font-size: var(--font-size-h3); font-weight: 800; color: var(--aoop-blue); margin-bottom: 1.25rem; width: 100%; max-width: 100%; display: block; text-align: left;">
             Uma visão 360° da plataforma organizada por capabilities.
           </h2>
-          <p class="auto-exec-subtitle auto-exec-subtitle--center" style="max-width: 950px;">
-            O Capability Map consolida em uma única visão o que existe na plataforma, o que está licenciado, como cada capability está sendo utilizada, sua saúde e tudo que está acontecendo ao seu redor.
+          <p class="auto-exec-subtitle" style="max-width: 950px; text-align: left;">
+            O Capability Map consolida em uma única visão o que existe na plataforma, o que está licenciado, como cada
+            capability está sendo utilizada, sua saúde e tudo que está acontecendo ao seu redor.
           </p>
         </div>
 
         <div
-          style="background: linear-gradient(135deg, rgba(0, 146, 213, 0.18) 0%, rgba(10, 18, 29, 0.95) 100%); border: 1px solid var(--aoop-blue); border-radius: 16px; padding: 1.75rem 2rem; text-align: center; box-shadow: 0 0 25px rgba(0,146,213,0.25);">
-          <div
-            style="font-size: 0.78rem; font-weight: 900; color: var(--aoop-yellow); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 0.5rem;">
-            PERGUNTA CHAVE DE GOVERNANÇA
-          </div>
+          style="background: linear-gradient(135deg, rgba(0, 146, 213, 0.18) 0%, rgba(10, 18, 29, 0.95) 100%); border: 1px solid var(--aoop-blue); border-radius: 16px; padding: 1.75rem 2rem; text-align: left; box-shadow: 0 0 25px rgba(0,146,213,0.25);">
           <h3
             style="font-size: var(--font-size-h3); font-weight: 800; color: var(--text-main); margin: 0; line-height: 1.4; font-style: italic;">
-            "Temos uma visão clara de tudo que existe, é utilizado e está evoluindo dentro da plataforma?"
+            Temos uma visão clara de tudo que existe, é utilizado e está evoluindo dentro da plataforma?
           </h3>
         </div>
       </div>
@@ -10514,7 +10465,8 @@
                 <div
                   style="font-size: 0.68rem; font-weight: 900; color: var(--aoop-blue); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 0.25rem;">
                   01 · DISPONIBILIDADE</div>
-                <h4 style="font-size: 0.95rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.5rem;">O que temos?
+                <h4 style="font-size: 0.95rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.5rem;">O que
+                  temos?
                 </h4>
                 <div
                   style="display: flex; flex-direction: column; gap: 4px; font-size: 0.75rem; color: #cbd5e1; font-weight: 600; margin-bottom: 0.75rem;">
@@ -10536,7 +10488,8 @@
                 <div
                   style="font-size: 0.68rem; font-weight: 900; color: #34d399; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 0.25rem;">
                   02 · USO & ADOÇÃO</div>
-                <h4 style="font-size: 0.95rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.5rem;">Estamos
+                <h4 style="font-size: 0.95rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.5rem;">
+                  Estamos
                   utilizando?</h4>
                 <div
                   style="display: flex; flex-direction: column; gap: 4px; font-size: 0.75rem; color: #cbd5e1; font-weight: 600; margin-bottom: 0.75rem;">
@@ -10580,7 +10533,8 @@
                 <div
                   style="font-size: 0.68rem; font-weight: 900; color: #c084fc; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 0.25rem;">
                   04 · EVOLUÇÃO</div>
-                <h4 style="font-size: 0.95rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.5rem;">O que está
+                <h4 style="font-size: 0.95rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.5rem;">O que
+                  está
                   mudando?</h4>
                 <div
                   style="display: flex; flex-direction: column; gap: 4px; font-size: 0.75rem; color: #cbd5e1; font-weight: 600; margin-bottom: 0.75rem;">
@@ -10602,7 +10556,8 @@
                 <div
                   style="font-size: 0.68rem; font-weight: 900; color: var(--aoop-blue); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 0.25rem;">
                   05 · AUTOMAÇÃO</div>
-                <h4 style="font-size: 0.95rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.5rem;">Como opera?
+                <h4 style="font-size: 0.95rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.5rem;">Como
+                  opera?
                 </h4>
                 <div
                   style="display: flex; flex-direction: column; gap: 4px; font-size: 0.75rem; color: #cbd5e1; font-weight: 600; margin-bottom: 0.75rem;">
@@ -10657,7 +10612,8 @@
             <div
               style="font-size: 0.72rem; font-weight: 900; color: var(--aoop-blue); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 0.4rem;">
               AOOP SQUAD MANAGEMENT</div>
-            <h4 style="font-size: 0.95rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.75rem;">O que está
+            <h4 style="font-size: 0.95rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.75rem;">O que
+              está
               acontecendo?</h4>
             <div style="display: flex; flex-wrap: wrap; gap: 4px; justify-content: center;">
               <span
@@ -10730,9 +10686,10 @@
           style="background: linear-gradient(135deg, rgba(0, 146, 213, 0.15) 0%, rgba(10, 18, 29, 0.95) 100%); border-left: 4px solid var(--aoop-blue); border-radius: 12px; padding: 1.25rem 1.75rem; text-align: center;">
           <blockquote
             style="font-size: 1.05rem; font-weight: 700; color: #ffffff; line-height: 1.6; margin: 0; font-style: normal;">
-            "ASM registra o que está acontecendo. Automation Suite mostra como está operando. CSDM fornece o contexto da
-            plataforma. <span style="color: var(--aoop-yellow);">Capability Map transforma essas informações em visão
-              executiva."</span>
+            ASM registra o que está acontecendo. Automation Suite mostra como está operando. CSDM fornece o contexto da
+            plataforma.</br> <span style="color: var(--aoop-yellow);">Capability Map transforma essas informações em
+              visão
+              executiva.</span>
           </blockquote>
         </div>
       </div>
@@ -10856,9 +10813,10 @@
 
     </div>
 
-      <hr class="section-divider">
+    <hr class="section-divider">
 
-    <div class="section-header section-header--center" style="width: min(90%, var(--content-max-width-wide)); margin-left: auto; margin-right: auto; padding-top: var(--space-md); margin-bottom: var(--space-lg); text-align: center;">
+    <div class="section-header section-header--center"
+      style="width: 90%; margin-left: auto; margin-right: auto; padding-top: var(--space-md); margin-bottom: var(--space-lg); text-align: center;">
       <div
         style="font-size: var(--font-size-eyebrow); font-weight: 800; color: var(--aoop-yellow); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: var(--space-xs); text-align: center;">
         · DEMO ·
@@ -11288,9 +11246,7 @@
         </div>
       </div>
 
-      <div style="text-align:center; font-size:0.75rem; color:var(--text-light); margin-top:2rem; font-style:italic;">
-        Fonte conceitual: dss.bg — "ServiceNow Capability Map: IT & Customer Workflows (Part 1)"
-      </div>
+
     </div>
   </section>
 
@@ -11305,14 +11261,14 @@
            01 — TRÊS FRENTES. UMA ÚNICA VISÃO.
            ========================================================================== -->
       <div class="auto-exec-block" id="review-block-1" style="margin-bottom: 4rem;">
-        <div style="text-align: center; margin-bottom: 2.25rem;">
-          <div class="auto-exec-eyebrow auto-exec-eyebrow--center">
+        <div style="text-align: left; margin-bottom: 2.25rem;">
+          <div class="auto-exec-eyebrow">
             PLATFORM INTELLIGENCE · REVIEW
           </div>
-          <h1 class="auto-exec-title auto-exec-title--center">
+          <h1 class="auto-exec-title">
             Três frentes. Uma única visão de gestão da plataforma.
           </h1>
-          <p class="auto-exec-subtitle auto-exec-subtitle--center" style="max-width: 900px;">
+          <p class="auto-exec-subtitle" style="max-width: 900px; text-align: left;">
             Automation Suite, Aoop Squad Management e Capability Map atuam em perspectivas diferentes, mas
             complementares, da gestão da plataforma.
           </p>
@@ -11322,7 +11278,8 @@
         <div class="grid-3" style="margin-bottom: var(--space-lg);">
 
           <!-- AUTOMATION SUITE (OPERATE) -->
-          <div class="card" style="border-color: rgba(0, 146, 213, 0.35); display: flex; flex-direction: column; justify-content: space-between;">
+          <div class="card"
+            style="border-color: rgba(0, 146, 213, 0.35); display: flex; flex-direction: column; justify-content: space-between;">
             <div>
               <div
                 style="font-size: var(--font-size-small); font-weight: 900; color: var(--aoop-blue); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 0.35rem;">
@@ -11344,13 +11301,15 @@
                   style="font-size: var(--font-size-small); font-weight: 800; color: var(--text-main); background: rgba(0, 146, 213, 0.18); padding: 4px 10px; border-radius: 6px; border: 1px solid rgba(0, 146, 213, 0.35);">Inteligência</span>
               </div>
             </div>
-            <p class="card-description" style="margin: 0; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.85rem;">
+            <p class="card-description"
+              style="margin: 0; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.85rem;">
               Observabilidade e governança sobre Flows, integrações, RPAs e Inteligência Artificial.
             </p>
           </div>
 
           <!-- AOOP SQUAD MANAGEMENT (PRIORITIZE) -->
-          <div class="card" style="border-color: rgba(245, 177, 17, 0.35); display: flex; flex-direction: column; justify-content: space-between;">
+          <div class="card"
+            style="border-color: rgba(245, 177, 17, 0.35); display: flex; flex-direction: column; justify-content: space-between;">
             <div>
               <div
                 style="font-size: var(--font-size-small); font-weight: 900; color: var(--aoop-yellow); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 0.35rem;">
@@ -11358,7 +11317,8 @@
               </div>
               <h3 class="card-title" style="margin-bottom: var(--space-xs);">AOOP SQUAD
                 MANAGEMENT</h3>
-              <h4 style="font-size: 0.92rem; font-weight: 800; color: var(--color-success); margin-bottom: 1rem;">O que estamos
+              <h4 style="font-size: 0.92rem; font-weight: 800; color: var(--color-success); margin-bottom: 1rem;">O que
+                estamos
                 priorizando e entregando?</h4>
 
               <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1.25rem;">
@@ -11372,13 +11332,15 @@
                   style="font-size: var(--font-size-small); font-weight: 800; color: var(--text-main); background: rgba(245, 177, 17, 0.18); padding: 4px 10px; border-radius: 6px; border: 1px solid rgba(245, 177, 17, 0.35);">Rastreabilidade</span>
               </div>
             </div>
-            <p class="card-description" style="margin: 0; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.85rem;">
+            <p class="card-description"
+              style="margin: 0; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.85rem;">
               Conecta estratégia, priorização, planejamento, delivery e execução através do ASM Framework e do SStudio.
             </p>
           </div>
 
           <!-- CAPABILITY MAP (EVOLVE) -->
-          <div class="card" style="border-color: rgba(52, 211, 153, 0.35); display: flex; flex-direction: column; justify-content: space-between;">
+          <div class="card"
+            style="border-color: rgba(52, 211, 153, 0.35); display: flex; flex-direction: column; justify-content: space-between;">
             <div>
               <div
                 style="font-size: var(--font-size-small); font-weight: 900; color: var(--color-success); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 0.35rem;">
@@ -11400,7 +11362,8 @@
                   style="font-size: var(--font-size-small); font-weight: 800; color: var(--text-main); background: rgba(52, 211, 153, 0.18); padding: 4px 10px; border-radius: 6px; border: 1px solid rgba(52, 211, 153, 0.35);">Evolução</span>
               </div>
             </div>
-            <p class="card-description" style="margin: 0; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.85rem;">
+            <p class="card-description"
+              style="margin: 0; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.85rem;">
               Consolida todo o contexto de cada capability para oferecer uma visão 360° da plataforma.
             </p>
           </div>
@@ -11635,7 +11598,8 @@
               <div
                 style="font-size: 0.72rem; font-weight: 900; color: var(--aoop-blue); letter-spacing: 1.5px; margin-bottom: 4px;">
                 OPERATE</div>
-              <div style="font-size: 1.05rem; font-weight: 900; color: var(--text-main); margin-bottom: 6px;">Automation Suite
+              <div style="font-size: 1.05rem; font-weight: 900; color: var(--text-main); margin-bottom: 6px;">Automation
+                Suite
               </div>
               <div style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.4;">Como estamos operando a
                 plataforma.</div>
@@ -11657,7 +11621,8 @@
               <div
                 style="font-size: 0.72rem; font-weight: 900; color: #34d399; letter-spacing: 1.5px; margin-bottom: 4px;">
                 EVOLVE</div>
-              <div style="font-size: 1.05rem; font-weight: 900; color: var(--text-main); margin-bottom: 6px;">Capability Map
+              <div style="font-size: 1.05rem; font-weight: 900; color: var(--text-main); margin-bottom: 6px;">Capability
+                Map
               </div>
               <div style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.4;">Como está nossa plataforma e
                 como ela está evoluindo.</div>
@@ -11709,33 +11674,47 @@
 
       <!-- 01 — HERO (CENTRALIZADO HORIZONTALMENTE) -->
       <div class="auto-exec-block" style="margin-bottom: 3.5rem;">
-        <div style="width: 100%; max-width: 1000px; margin: 0 auto; text-align: center; display: flex; flex-direction: column; align-items: center;">
-          <div class="auto-exec-eyebrow auto-exec-eyebrow--center">
+        <div
+          style="width: 100%; max-width: 1000px; text-align: left; display: flex; flex-direction: column; align-items: flex-start;">
+          <div class="auto-exec-eyebrow">
             PLATFORM INTELLIGENCE · 2027
           </div>
-          <h1 class="auto-exec-title auto-exec-title--center">
+          <h1 class="auto-exec-title">
             Da visão para a execução.
           </h1>
-          <p class="auto-exec-subtitle auto-exec-subtitle--center" style="max-width: 840px; margin-bottom: 2.5rem;">
-            Evoluir capacidades já existentes, ampliar sua adoção e conectá-las em uma visão única de gestão da plataforma.
+          <p class="auto-exec-subtitle" style="max-width: 840px; margin-bottom: 2.5rem; text-align: left;">
+            Evoluir capacidades já existentes, ampliar sua adoção e conectá-las em uma visão única de gestão da
+            plataforma.
           </p>
 
           <!-- REPRESENTAÇÃO CONCEITUAL DOS 4 QUARTERS -->
-          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; width: 100%; max-width: 1100px; margin: 0 auto;">
-            <div style="background: rgba(0, 146, 213, 0.08); border: 1px solid rgba(0, 146, 213, 0.3); border-radius: 12px; padding: 1.15rem 1rem; text-align: center;">
-              <div style="font-size: 0.72rem; font-weight: 900; color: var(--aoop-blue); letter-spacing: 1px; margin-bottom: 4px;">Q1 · STRUCTURE</div>
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; width: 100%; max-width: 1100px;">
+            <div
+              style="background: rgba(0, 146, 213, 0.08); border: 1px solid rgba(0, 146, 213, 0.3); border-radius: 12px; padding: 1.15rem 1rem; text-align: center;">
+              <div
+                style="font-size: 0.72rem; font-weight: 900; color: var(--aoop-blue); letter-spacing: 1px; margin-bottom: 4px;">
+                Q1 · STRUCTURE</div>
               <div style="font-size: 0.92rem; font-weight: 800; color: #ffffff;">Estruturar</div>
             </div>
-            <div style="background: rgba(245, 177, 17, 0.08); border: 1px solid rgba(245, 177, 17, 0.3); border-radius: 12px; padding: 1.15rem 1rem; text-align: center;">
-              <div style="font-size: 0.72rem; font-weight: 900; color: var(--aoop-yellow); letter-spacing: 1px; margin-bottom: 4px;">Q2 · ADOPT</div>
+            <div
+              style="background: rgba(245, 177, 17, 0.08); border: 1px solid rgba(245, 177, 17, 0.3); border-radius: 12px; padding: 1.15rem 1rem; text-align: center;">
+              <div
+                style="font-size: 0.72rem; font-weight: 900; color: var(--aoop-yellow); letter-spacing: 1px; margin-bottom: 4px;">
+                Q2 · ADOPT</div>
               <div style="font-size: 0.92rem; font-weight: 800; color: #ffffff;">Adotar</div>
             </div>
-            <div style="background: rgba(192, 132, 252, 0.08); border: 1px solid rgba(192, 132, 252, 0.3); border-radius: 12px; padding: 1.15rem 1rem; text-align: center;">
-              <div style="font-size: 0.72rem; font-weight: 900; color: #c084fc; letter-spacing: 1px; margin-bottom: 4px;">Q3 · CONNECT</div>
+            <div
+              style="background: rgba(192, 132, 252, 0.08); border: 1px solid rgba(192, 132, 252, 0.3); border-radius: 12px; padding: 1.15rem 1rem; text-align: center;">
+              <div
+                style="font-size: 0.72rem; font-weight: 900; color: #c084fc; letter-spacing: 1px; margin-bottom: 4px;">
+                Q3 · CONNECT</div>
               <div style="font-size: 0.92rem; font-weight: 800; color: #ffffff;">Conectar</div>
             </div>
-            <div style="background: rgba(52, 211, 153, 0.08); border: 1px solid rgba(52, 211, 153, 0.3); border-radius: 12px; padding: 1.15rem 1rem; text-align: center;">
-              <div style="font-size: 0.72rem; font-weight: 900; color: #34d399; letter-spacing: 1px; margin-bottom: 4px;">Q4 · INTELLIGENCE</div>
+            <div
+              style="background: rgba(52, 211, 153, 0.08); border: 1px solid rgba(52, 211, 153, 0.3); border-radius: 12px; padding: 1.15rem 1rem; text-align: center;">
+              <div
+                style="font-size: 0.72rem; font-weight: 900; color: #34d399; letter-spacing: 1px; margin-bottom: 4px;">
+                Q4 · INTELLIGENCE</div>
               <div style="font-size: 0.92rem; font-weight: 800; color: #ffffff;">Gerar inteligência</div>
             </div>
           </div>
@@ -11752,7 +11731,8 @@
             <div
               style="font-size: 0.75rem; font-weight: 800; color: var(--aoop-blue); letter-spacing: 1.5px; text-transform: uppercase;">
               AGENDA 2027</div>
-            <h2 style="font-size: var(--font-size-h2); font-weight: 900; color: var(--text-main); margin-top: 2px;">Próximos Passos por Trilha</h2>
+            <h2 style="font-size: var(--font-size-h2); font-weight: 900; color: var(--text-main); margin-top: 2px;">
+              Próximos Passos por Trilha</h2>
           </div>
           <div style="font-size: 0.78rem; color: var(--text-muted); font-weight: 600;">
             Adoção, expansão e amadurecimento das capacidades existentes
@@ -11767,11 +11747,13 @@
             <div></div>
             <div
               style="background: rgba(0, 146, 213, 0.15); border: 1px solid rgba(0, 146, 213, 0.35); border-radius: 10px; padding: 0.75rem; text-align: center;">
-              <div style="font-size: 0.82rem; font-weight: 900; color: var(--aoop-blue); letter-spacing: 1px;">Q1 · STRUCTURE</div>
+              <div style="font-size: 0.82rem; font-weight: 900; color: var(--aoop-blue); letter-spacing: 1px;">Q1 ·
+                STRUCTURE</div>
             </div>
             <div
               style="background: rgba(245, 177, 17, 0.15); border: 1px solid rgba(245, 177, 17, 0.35); border-radius: 10px; padding: 0.75rem; text-align: center;">
-              <div style="font-size: 0.82rem; font-weight: 900; color: var(--aoop-yellow); letter-spacing: 1px;">Q2 · ADOPT</div>
+              <div style="font-size: 0.82rem; font-weight: 900; color: var(--aoop-yellow); letter-spacing: 1px;">Q2 ·
+                ADOPT</div>
             </div>
             <div
               style="background: rgba(192, 132, 252, 0.15); border: 1px solid rgba(192, 132, 252, 0.35); border-radius: 10px; padding: 0.75rem; text-align: center;">
@@ -11779,7 +11761,8 @@
             </div>
             <div
               style="background: rgba(52, 211, 153, 0.15); border: 1px solid rgba(52, 211, 153, 0.35); border-radius: 10px; padding: 0.75rem; text-align: center;">
-              <div style="font-size: 0.82rem; font-weight: 900; color: #34d399; letter-spacing: 1px;">Q4 · INTELLIGENCE</div>
+              <div style="font-size: 0.82rem; font-weight: 900; color: #34d399; letter-spacing: 1px;">Q4 · INTELLIGENCE
+              </div>
             </div>
           </div>
 
@@ -11788,50 +11771,61 @@
             <!-- CARD DE IDENTIFICAÇÃO DA TRILHA -->
             <div
               style="background: rgba(10, 18, 29, 0.95); border: 1px solid rgba(245, 177, 17, 0.35); border-left: 4px solid var(--aoop-yellow); border-radius: 12px; padding: 1.25rem 1rem; display: flex; flex-direction: column; justify-content: center;">
-              <div style="font-size: 0.68rem; font-weight: 900; color: var(--aoop-yellow); letter-spacing: 1.5px; margin-bottom: 2px;">PRIORITIZE</div>
-              <h3 style="font-size: var(--font-size-body-lg); font-weight: 900; color: var(--text-main);">AOOP SQUAD MANAGEMENT</h3>
+              <div
+                style="font-size: 0.68rem; font-weight: 900; color: var(--aoop-yellow); letter-spacing: 1.5px; margin-bottom: 2px;">
+                PRIORITIZE</div>
+              <h3 style="font-size: var(--font-size-body-lg); font-weight: 900; color: var(--text-main);">AOOP SQUAD
+                MANAGEMENT</h3>
               <div style="font-size: 0.7rem; color: var(--aoop-yellow); font-weight: 700; margin-top: 6px;">
                 Framework existente → Adoção → Expansão → Gestão por dados
               </div>
             </div>
 
             <!-- Q1 CELL -->
-            <div style="background: rgba(10, 18, 29, 0.75); border: 1px solid rgba(245, 177, 17, 0.2); border-radius: 12px; padding: 1.15rem; display: flex; flex-direction: column; justify-content: space-between;">
+            <div
+              style="background: rgba(10, 18, 29, 0.75); border: 1px solid rgba(245, 177, 17, 0.2); border-radius: 12px; padding: 1.15rem; display: flex; flex-direction: column; justify-content: space-between;">
               <div style="font-size: 0.85rem; font-weight: 800; color: #ffffff; margin-bottom: 0.5rem;">
                 Consolidar o ASM como modelo de trabalho
               </div>
               <div style="font-size: 0.76rem; color: var(--text-muted); line-height: 1.45;">
-                Formalizar o framework, preparar materiais, definir padrões e estruturar a estratégia de adoção para os times ServiceNow.
+                Formalizar o framework, preparar materiais, definir padrões e estruturar a estratégia de adoção para os
+                times ServiceNow.
               </div>
             </div>
 
             <!-- Q2 CELL -->
-            <div style="background: rgba(10, 18, 29, 0.75); border: 1px solid rgba(245, 177, 17, 0.2); border-radius: 12px; padding: 1.15rem; display: flex; flex-direction: column; justify-content: space-between;">
+            <div
+              style="background: rgba(10, 18, 29, 0.75); border: 1px solid rgba(245, 177, 17, 0.2); border-radius: 12px; padding: 1.15rem; display: flex; flex-direction: column; justify-content: space-between;">
               <div style="font-size: 0.85rem; font-weight: 800; color: #ffffff; margin-bottom: 0.5rem;">
                 Expandir o SStudio para os times ServiceNow
               </div>
               <div style="font-size: 0.76rem; color: var(--text-muted); line-height: 1.45;">
-                Engajar, treinar e incorporar os times que desenvolvem na plataforma ao ASM Framework e ao uso do SStudio.
+                Engajar, treinar e incorporar os times que desenvolvem na plataforma ao ASM Framework e ao uso do
+                SStudio.
               </div>
             </div>
 
             <!-- Q3 CELL -->
-            <div style="background: rgba(10, 18, 29, 0.85); border: 1px solid rgba(192, 132, 252, 0.35); border-radius: 12px; padding: 1.15rem; display: flex; flex-direction: column; justify-content: space-between;">
+            <div
+              style="background: rgba(10, 18, 29, 0.85); border: 1px solid rgba(192, 132, 252, 0.35); border-radius: 12px; padding: 1.15rem; display: flex; flex-direction: column; justify-content: space-between;">
               <div style="font-size: 0.85rem; font-weight: 800; color: #ffffff; margin-bottom: 0.5rem;">
                 Expandir o SStudio para estratégia e sustentação
               </div>
               <div style="font-size: 0.76rem; color: var(--text-muted); line-height: 1.45;">
-                Evoluir ideação, metas, intakes e demandas de sustain, conectando estratégia, desenvolvimento e sustentação.
+                Evoluir ideação, metas, intakes e demandas de sustain, conectando estratégia, desenvolvimento e
+                sustentação.
               </div>
             </div>
 
             <!-- Q4 CELL -->
-            <div style="background: rgba(10, 18, 29, 0.75); border: 1px solid rgba(52, 211, 153, 0.25); border-radius: 12px; padding: 1.15rem; display: flex; flex-direction: column; justify-content: space-between;">
+            <div
+              style="background: rgba(10, 18, 29, 0.75); border: 1px solid rgba(52, 211, 153, 0.25); border-radius: 12px; padding: 1.15rem; display: flex; flex-direction: column; justify-content: space-between;">
               <div style="font-size: 0.85rem; font-weight: 800; color: #ffffff; margin-bottom: 0.5rem;">
                 Consolidar gestão e indicadores
               </div>
               <div style="font-size: 0.76rem; color: var(--text-muted); line-height: 1.45;">
-                Utilizar os dados do modelo para ampliar rastreabilidade, indicadores de fluxo, capacity e melhoria contínua.
+                Utilizar os dados do modelo para ampliar rastreabilidade, indicadores de fluxo, capacity e melhoria
+                contínua.
               </div>
             </div>
           </div>
@@ -11841,50 +11835,61 @@
             <!-- CARD DE IDENTIFICAÇÃO DA TRILHA -->
             <div
               style="background: rgba(10, 18, 29, 0.95); border: 1px solid rgba(0, 146, 213, 0.35); border-left: 4px solid var(--aoop-blue); border-radius: 12px; padding: 1.25rem 1rem; display: flex; flex-direction: column; justify-content: center;">
-              <div style="font-size: 0.68rem; font-weight: 900; color: var(--aoop-blue); letter-spacing: 1.5px; margin-bottom: 2px;">OPERATE</div>
-              <h3 style="font-size: var(--font-size-body-lg); font-weight: 900; color: var(--text-main);">AUTOMATION SUITE</h3>
+              <div
+                style="font-size: 0.68rem; font-weight: 900; color: var(--aoop-blue); letter-spacing: 1.5px; margin-bottom: 2px;">
+                OPERATE</div>
+              <h3 style="font-size: var(--font-size-body-lg); font-weight: 900; color: var(--text-main);">AUTOMATION
+                SUITE</h3>
               <div style="font-size: 0.7rem; color: var(--aoop-blue); font-weight: 700; margin-top: 6px;">
                 Arquitetura existente → Produto → Métricas → Inteligência
               </div>
             </div>
 
             <!-- Q1 CELL -->
-            <div style="background: rgba(10, 18, 29, 0.75); border: 1px solid rgba(0, 146, 213, 0.2); border-radius: 12px; padding: 1.15rem; display: flex; flex-direction: column; justify-content: space-between;">
+            <div
+              style="background: rgba(10, 18, 29, 0.75); border: 1px solid rgba(0, 146, 213, 0.2); border-radius: 12px; padding: 1.15rem; display: flex; flex-direction: column; justify-content: space-between;">
               <div style="font-size: 0.85rem; font-weight: 800; color: #ffffff; margin-bottom: 0.5rem;">
                 Definir o produto Automation Suite
               </div>
               <div style="font-size: 0.76rem; color: var(--text-muted); line-height: 1.45;">
-                Estruturar métricas, indicadores, ownership e critérios para gerir o Automation Suite como produto da plataforma.
+                Estruturar métricas, indicadores, ownership e critérios para gerir o Automation Suite como produto da
+                plataforma.
               </div>
             </div>
 
             <!-- Q2 CELL -->
-            <div style="background: rgba(10, 18, 29, 0.75); border: 1px solid rgba(0, 146, 213, 0.2); border-radius: 12px; padding: 1.15rem; display: flex; flex-direction: column; justify-content: space-between;">
+            <div
+              style="background: rgba(10, 18, 29, 0.75); border: 1px solid rgba(0, 146, 213, 0.2); border-radius: 12px; padding: 1.15rem; display: flex; flex-direction: column; justify-content: space-between;">
               <div style="font-size: 0.85rem; font-weight: 800; color: #ffffff; margin-bottom: 0.5rem;">
                 Medir a operação
               </div>
               <div style="font-size: 0.76rem; color: var(--text-muted); line-height: 1.45;">
-                Colocar Flow, Connect, Relay e AI sob uma visão contínua de performance, utilização, falhas e eficiência.
+                Colocar Flow, Connect, Relay e AI sob uma visão contínua de performance, utilização, falhas e
+                eficiência.
               </div>
             </div>
 
             <!-- Q3 CELL -->
-            <div style="background: rgba(10, 18, 29, 0.85); border: 1px solid rgba(192, 132, 252, 0.35); border-radius: 12px; padding: 1.15rem; display: flex; flex-direction: column; justify-content: space-between;">
+            <div
+              style="background: rgba(10, 18, 29, 0.85); border: 1px solid rgba(192, 132, 252, 0.35); border-radius: 12px; padding: 1.15rem; display: flex; flex-direction: column; justify-content: space-between;">
               <div style="font-size: 0.85rem; font-weight: 800; color: #ffffff; margin-bottom: 0.5rem;">
                 Relacionar automação ao contexto da plataforma
               </div>
               <div style="font-size: 0.76rem; color: var(--text-muted); line-height: 1.45;">
-                Conectar automações, integrações e IA aos serviços e capabilities que elas suportam através do contexto do CSDM.
+                Conectar automações, integrações e IA aos serviços e capabilities que elas suportam através do contexto
+                do CSDM.
               </div>
             </div>
 
             <!-- Q4 CELL -->
-            <div style="background: rgba(10, 18, 29, 0.75); border: 1px solid rgba(52, 211, 153, 0.25); border-radius: 12px; padding: 1.15rem; display: flex; flex-direction: column; justify-content: space-between;">
+            <div
+              style="background: rgba(10, 18, 29, 0.75); border: 1px solid rgba(52, 211, 153, 0.25); border-radius: 12px; padding: 1.15rem; display: flex; flex-direction: column; justify-content: space-between;">
               <div style="font-size: 0.85rem; font-weight: 800; color: #ffffff; margin-bottom: 0.5rem;">
                 Transformar métricas em otimização
               </div>
               <div style="font-size: 0.76rem; color: var(--text-muted); line-height: 1.45;">
-                Utilizar os dados acumulados para identificar tendências, riscos, oportunidades de eficiência e melhoria contínua.
+                Utilizar os dados acumulados para identificar tendências, riscos, oportunidades de eficiência e melhoria
+                contínua.
               </div>
             </div>
           </div>
@@ -11894,25 +11899,31 @@
             <!-- CARD DE IDENTIFICAÇÃO DA TRILHA -->
             <div
               style="background: rgba(10, 18, 29, 0.95); border: 1px solid rgba(52, 211, 153, 0.35); border-left: 4px solid #34d399; border-radius: 12px; padding: 1.25rem 1rem; display: flex; flex-direction: column; justify-content: center;">
-              <div style="font-size: 0.68rem; font-weight: 900; color: #34d399; letter-spacing: 1.5px; margin-bottom: 2px;">EVOLVE</div>
-              <h3 style="font-size: var(--font-size-body-lg); font-weight: 900; color: var(--text-main);">CAPABILITY MAP</h3>
+              <div
+                style="font-size: 0.68rem; font-weight: 900; color: #34d399; letter-spacing: 1.5px; margin-bottom: 2px;">
+                EVOLVE</div>
+              <h3 style="font-size: var(--font-size-body-lg); font-weight: 900; color: var(--text-main);">CAPABILITY MAP
+              </h3>
               <div style="font-size: 0.7rem; color: #34d399; font-weight: 700; margin-top: 6px;">
                 Estrutura → Contexto → Conexão → Visão 360°
               </div>
             </div>
 
             <!-- Q1 CELL -->
-            <div style="background: rgba(10, 18, 29, 0.75); border: 1px solid rgba(52, 211, 153, 0.2); border-radius: 12px; padding: 1.15rem; display: flex; flex-direction: column; justify-content: space-between;">
+            <div
+              style="background: rgba(10, 18, 29, 0.75); border: 1px solid rgba(52, 211, 153, 0.2); border-radius: 12px; padding: 1.15rem; display: flex; flex-direction: column; justify-content: space-between;">
               <div style="font-size: 0.85rem; font-weight: 800; color: #ffffff; margin-bottom: 0.5rem;">
                 Consolidar a estrutura do Capability Map
               </div>
               <div style="font-size: 0.76rem; color: var(--text-muted); line-height: 1.45;">
-                Organizar capabilities, CSDM e informações essenciais para estabelecer uma visão confiável da plataforma.
+                Organizar capabilities, CSDM e informações essenciais para estabelecer uma visão confiável da
+                plataforma.
               </div>
             </div>
 
             <!-- Q2 CELL -->
-            <div style="background: rgba(10, 18, 29, 0.75); border: 1px solid rgba(52, 211, 153, 0.2); border-radius: 12px; padding: 1.15rem; display: flex; flex-direction: column; justify-content: space-between;">
+            <div
+              style="background: rgba(10, 18, 29, 0.75); border: 1px solid rgba(52, 211, 153, 0.2); border-radius: 12px; padding: 1.15rem; display: flex; flex-direction: column; justify-content: space-between;">
               <div style="font-size: 0.85rem; font-weight: 800; color: #ffffff; margin-bottom: 0.5rem;">
                 Enriquecer com licenciamento e utilização
               </div>
@@ -11922,7 +11933,8 @@
             </div>
 
             <!-- Q3 CELL -->
-            <div style="background: rgba(10, 18, 29, 0.85); border: 1px solid rgba(192, 132, 252, 0.35); border-radius: 12px; padding: 1.15rem; display: flex; flex-direction: column; justify-content: space-between;">
+            <div
+              style="background: rgba(10, 18, 29, 0.85); border: 1px solid rgba(192, 132, 252, 0.35); border-radius: 12px; padding: 1.15rem; display: flex; flex-direction: column; justify-content: space-between;">
               <div style="font-size: 0.85rem; font-weight: 800; color: #ffffff; margin-bottom: 0.5rem;">
                 Conectar o contexto da plataforma
               </div>
@@ -11932,12 +11944,14 @@
             </div>
 
             <!-- Q4 CELL -->
-            <div style="background: rgba(10, 18, 29, 0.75); border: 1px solid rgba(52, 211, 153, 0.25); border-radius: 12px; padding: 1.15rem; display: flex; flex-direction: column; justify-content: space-between;">
+            <div
+              style="background: rgba(10, 18, 29, 0.75); border: 1px solid rgba(52, 211, 153, 0.25); border-radius: 12px; padding: 1.15rem; display: flex; flex-direction: column; justify-content: space-between;">
               <div style="font-size: 0.85rem; font-weight: 800; color: #ffffff; margin-bottom: 0.5rem;">
                 Consolidar a visão 360°
               </div>
               <div style="font-size: 0.76rem; color: var(--text-muted); line-height: 1.45;">
-                Combinar utilização, saúde, evolução, demandas e automações em uma visão executiva integrada da plataforma.
+                Combinar utilização, saúde, evolução, demandas e automações em uma visão executiva integrada da
+                plataforma.
               </div>
             </div>
           </div>
@@ -11955,10 +11969,12 @@
             <div style="display: flex; align-items: center; gap: 10px;">
               <span style="font-size: 1.2rem; color: #c084fc;">🔗</span>
               <div>
-                <div style="font-size: 0.72rem; font-weight: 900; color: #c084fc; letter-spacing: 1.5px; text-transform: uppercase;">
+                <div
+                  style="font-size: 0.72rem; font-weight: 900; color: #c084fc; letter-spacing: 1.5px; text-transform: uppercase;">
                   INTEGRAÇÃO PROGRESSIVA DE CONTEXTO
                 </div>
-                <h3 style="font-size: var(--font-size-h3); font-weight: 900; color: var(--text-main);">Convergência dos Dados de Governança</h3>
+                <h3 style="font-size: var(--font-size-h3); font-weight: 900; color: var(--text-main);">Convergência dos
+                  Dados de Governança</h3>
               </div>
             </div>
             <div style="font-size: 0.78rem; color: var(--text-muted); font-weight: 600;">
@@ -11966,35 +11982,45 @@
             </div>
           </div>
 
-          <div style="display: grid; grid-template-columns: 1fr 40px 1fr 40px 1fr; gap: 0.75rem; align-items: center; text-align: center;">
-            
-            <div style="background: rgba(8, 17, 30, 0.85); border: 1px solid rgba(245, 177, 17, 0.3); border-radius: 12px; padding: 1rem;">
-              <div style="font-size: 0.72rem; font-weight: 900; color: var(--aoop-yellow); margin-bottom: 4px;">AOOP SQUAD MANAGEMENT</div>
-              <div style="font-size: 0.76rem; color: #cbd5e1; font-weight: 600;">Projects · Challenges · Incidents · Problems · Delivery</div>
+          <div
+            style="display: grid; grid-template-columns: 1fr 40px 1fr 40px 1fr; gap: 0.75rem; align-items: center; text-align: center;">
+
+            <div
+              style="background: rgba(8, 17, 30, 0.85); border: 1px solid rgba(245, 177, 17, 0.3); border-radius: 12px; padding: 1rem;">
+              <div style="font-size: 0.72rem; font-weight: 900; color: var(--aoop-yellow); margin-bottom: 4px;">AOOP
+                SQUAD MANAGEMENT</div>
+              <div style="font-size: 0.76rem; color: #cbd5e1; font-weight: 600;">Projects · Challenges · Incidents ·
+                Problems · Delivery</div>
             </div>
 
             <div style="color: #c084fc; font-size: 1.2rem; font-weight: 900;">→</div>
 
-            <div style="background: rgba(0, 146, 213, 0.12); border: 1px solid rgba(0, 146, 213, 0.35); border-radius: 12px; padding: 1rem;">
+            <div
+              style="background: rgba(0, 146, 213, 0.12); border: 1px solid rgba(0, 146, 213, 0.35); border-radius: 12px; padding: 1rem;">
               <div style="font-size: 0.75rem; font-weight: 900; color: var(--aoop-blue); margin-bottom: 2px;">CSDM</div>
               <div style="font-size: 0.72rem; color: var(--text-muted);">Nó Central de Contexto</div>
             </div>
 
             <div style="color: #c084fc; font-size: 1.2rem; font-weight: 900;">←</div>
 
-            <div style="background: rgba(8, 17, 30, 0.85); border: 1px solid rgba(0, 146, 213, 0.3); border-radius: 12px; padding: 1rem;">
-              <div style="font-size: 0.72rem; font-weight: 900; color: var(--aoop-blue); margin-bottom: 4px;">AUTOMATION SUITE</div>
-              <div style="font-size: 0.76rem; color: #cbd5e1; font-weight: 600;">Flows · APIs · RPA · AI · Performance</div>
+            <div
+              style="background: rgba(8, 17, 30, 0.85); border: 1px solid rgba(0, 146, 213, 0.3); border-radius: 12px; padding: 1rem;">
+              <div style="font-size: 0.72rem; font-weight: 900; color: var(--aoop-blue); margin-bottom: 4px;">AUTOMATION
+                SUITE</div>
+              <div style="font-size: 0.76rem; color: #cbd5e1; font-weight: 600;">Flows · APIs · RPA · AI · Performance
+              </div>
             </div>
 
           </div>
 
-          <div style="margin-top: 1.25rem; border-top: 1px solid rgba(192, 132, 252, 0.15); padding-top: 0.85rem; text-align: center;">
+          <div
+            style="margin-top: 1.25rem; border-top: 1px solid rgba(192, 132, 252, 0.15); padding-top: 0.85rem; text-align: center;">
             <div style="font-size: 0.82rem; font-weight: 700; color: #c084fc;">
               ↓ Alimenta a visão 360° em <strong>Capability Map</strong>
             </div>
             <div style="font-size: 0.76rem; color: var(--text-muted); margin-top: 2px;">
-              À medida que ASM e Automation Suite amadurecem, o Capability Map passa a consolidar uma visão cada vez mais completa da plataforma.
+              À medida que ASM e Automation Suite amadurecem, o Capability Map passa a consolidar uma visão cada vez
+              mais completa da plataforma.
             </div>
           </div>
         </div>
@@ -12032,7 +12058,8 @@
           </div>
 
           <div style="font-size: 0.85rem; color: #cbd5e1; text-align: center; line-height: 1.5;">
-            Além da evolução das três frentes, governança, arquitetura e melhoria contínua permanecem como responsabilidades constantes do time durante todo o ano.
+            Além da evolução das três frentes, governança, arquitetura e melhoria contínua permanecem como
+            responsabilidades constantes do time durante todo o ano.
           </div>
         </div>
       </div>
@@ -12056,20 +12083,32 @@
 
           <div
             style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-bottom: 2.25rem; max-width: 1000px; margin-left: auto; margin-right: auto;">
-            
-            <div style="background: rgba(245, 177, 17, 0.12); border: 1px solid rgba(245, 177, 17, 0.35); border-radius: 12px; padding: 1.15rem; text-align: center;">
-              <div style="font-size: 0.7rem; font-weight: 900; color: var(--aoop-yellow); letter-spacing: 1px; margin-bottom: 4px;">AOOP SQUAD MANAGEMENT</div>
-              <div style="font-size: 0.88rem; font-weight: 800; color: #ffffff;">Adotar e conectar o modelo de trabalho.</div>
+
+            <div
+              style="background: rgba(245, 177, 17, 0.12); border: 1px solid rgba(245, 177, 17, 0.35); border-radius: 12px; padding: 1.15rem; text-align: center;">
+              <div
+                style="font-size: 0.7rem; font-weight: 900; color: var(--aoop-yellow); letter-spacing: 1px; margin-bottom: 4px;">
+                AOOP SQUAD MANAGEMENT</div>
+              <div style="font-size: 0.88rem; font-weight: 800; color: #ffffff;">Adotar e conectar o modelo de trabalho.
+              </div>
             </div>
 
-            <div style="background: rgba(0, 146, 213, 0.12); border: 1px solid rgba(0, 146, 213, 0.35); border-radius: 12px; padding: 1.15rem; text-align: center;">
-              <div style="font-size: 0.7rem; font-weight: 900; color: var(--aoop-blue); letter-spacing: 1px; margin-bottom: 4px;">AUTOMATION SUITE</div>
-              <div style="font-size: 0.88rem; font-weight: 800; color: #ffffff;">Transformar arquitetura em produto mensurável.</div>
+            <div
+              style="background: rgba(0, 146, 213, 0.12); border: 1px solid rgba(0, 146, 213, 0.35); border-radius: 12px; padding: 1.15rem; text-align: center;">
+              <div
+                style="font-size: 0.7rem; font-weight: 900; color: var(--aoop-blue); letter-spacing: 1px; margin-bottom: 4px;">
+                AUTOMATION SUITE</div>
+              <div style="font-size: 0.88rem; font-weight: 800; color: #ffffff;">Transformar arquitetura em produto
+                mensurável.</div>
             </div>
 
-            <div style="background: rgba(52, 211, 153, 0.12); border: 1px solid rgba(52, 211, 153, 0.35); border-radius: 12px; padding: 1.15rem; text-align: center;">
-              <div style="font-size: 0.7rem; font-weight: 900; color: #34d399; letter-spacing: 1px; margin-bottom: 4px;">CAPABILITY MAP</div>
-              <div style="font-size: 0.88rem; font-weight: 800; color: #ffffff;">Transformar contexto em uma visão 360° da plataforma.</div>
+            <div
+              style="background: rgba(52, 211, 153, 0.12); border: 1px solid rgba(52, 211, 153, 0.35); border-radius: 12px; padding: 1.15rem; text-align: center;">
+              <div
+                style="font-size: 0.7rem; font-weight: 900; color: #34d399; letter-spacing: 1px; margin-bottom: 4px;">
+                CAPABILITY MAP</div>
+              <div style="font-size: 0.88rem; font-weight: 800; color: #ffffff;">Transformar contexto em uma visão 360°
+                da plataforma.</div>
             </div>
 
           </div>
@@ -12082,13 +12121,15 @@
 
           <p
             style="font-size: 1.05rem; color: var(--text-muted); max-width: 880px; margin: 0 auto 2rem; line-height: 1.65; font-weight: 500;">
-            2027 consolida capacidades existentes, amplia sua adoção e conecta seus dados para criar uma visão integrada e continuamente atualizada da plataforma.
+            2027 consolida capacidades existentes, amplia sua adoção e conecta seus dados para criar uma visão integrada
+            e continuamente atualizada da plataforma.
           </p>
 
           <div
             style="background: rgba(0, 0, 0, 0.35); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 12px; padding: 1.25rem 2rem; max-width: 880px; margin: 0 auto;">
             <div style="font-size: 0.9rem; font-weight: 700; color: var(--aoop-yellow); line-height: 1.6;">
-              O objetivo para 2027 não é construir três novas soluções, mas transformar capacidades já desenvolvidas em um modelo integrado, adotado e continuamente gerenciado.
+              O objetivo para 2027 não é construir três novas soluções, mas transformar capacidades já desenvolvidas em
+              um modelo integrado, adotado e continuamente gerenciado.
             </div>
           </div>
 
