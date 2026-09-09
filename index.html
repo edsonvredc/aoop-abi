@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
@@ -2422,6 +2422,196 @@
       color: var(--text-light);
       margin-top: 2px;
       font-weight: 600;
+    }
+
+    /* ==========================================================================
+       HORIZON FLOW — SCALABILITY STATUS BADGES, TOOLTIPS & MATURITY BAR
+       ========================================================================== */
+    .scale-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 9px;
+      border-radius: 6px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+      position: relative;
+      cursor: help;
+      transition: var(--transition-fast);
+      box-sizing: border-box;
+      line-height: 1.3;
+    }
+
+    .scale-badge:hover {
+      transform: translateY(-1px);
+    }
+
+    /* 5 Status Levels */
+    .scale-badge.case-specific {
+      background: rgba(148, 163, 184, 0.12);
+      color: #cbd5e1;
+      border: 1px solid rgba(148, 163, 184, 0.28);
+    }
+
+    .scale-badge.scale-potential {
+      background: rgba(56, 189, 248, 0.12);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.32);
+    }
+
+    .scale-badge.scale-ready {
+      background: rgba(0, 146, 213, 0.15);
+      color: #0092D5;
+      border: 1px solid rgba(0, 146, 213, 0.4);
+    }
+
+    .scale-badge.multi-service {
+      background: rgba(129, 140, 248, 0.15);
+      color: #818cf8;
+      border: 1px solid rgba(129, 140, 248, 0.4);
+    }
+
+    .scale-badge.global-ready {
+      background: rgba(52, 211, 153, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(52, 211, 153, 0.4);
+      box-shadow: 0 0 10px rgba(52, 211, 153, 0.15);
+    }
+
+    /* Hover Tooltip */
+    .scale-badge .scale-tooltip {
+      position: absolute;
+      bottom: 125%;
+      left: 50%;
+      transform: translateX(-50%) translateY(4px);
+      background: #08111e;
+      border: 1px solid var(--border-accent);
+      color: var(--text-main);
+      padding: 6px 10px;
+      border-radius: 8px;
+      font-size: 0.68rem;
+      font-weight: 500;
+      white-space: normal;
+      width: max-content;
+      max-width: 220px;
+      text-align: center;
+      pointer-events: none;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.85);
+      z-index: 100;
+      line-height: 1.35;
+    }
+
+    .scale-badge:hover .scale-tooltip {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* Concept 4-Dimensions Grid */
+    .flow-dimensions-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 1.5rem;
+    }
+
+    .flow-dimension-card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 12px 14px;
+      transition: var(--transition-fast);
+    }
+
+    .flow-dimension-card:hover {
+      border-color: var(--border-accent);
+      transform: translateY(-2px);
+    }
+
+    .flow-dim-tag {
+      font-size: 0.65rem;
+      font-weight: 900;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .flow-dim-question {
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 4px;
+      line-height: 1.25;
+    }
+
+    .flow-dim-desc {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      line-height: 1.35;
+    }
+
+    /* Maturity Segmented Bar */
+    .scale-maturity-container {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .scale-mat-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .scale-mat-title {
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--text-main);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .scale-mat-bar {
+      height: 12px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 999px;
+      display: flex;
+      overflow: hidden;
+      gap: 2px;
+      margin-bottom: 10px;
+    }
+
+    .scale-mat-seg {
+      height: 100%;
+      position: relative;
+      transition: width 0.4s ease;
+    }
+
+    .scale-mat-legend {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 0.7rem;
+      font-weight: 700;
+    }
+
+    .scale-mat-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
     }
 
     /* ==========================================================================
@@ -6241,20 +6431,19 @@
           <div class="auto-exec-pillar-card" onclick="openDashModal('flow')">
             <div>
               <div class="auto-exec-pillar-header">
-                <span class="auto-exec-pillar-label label-flow">EFICIÊNCIA</span>
+                <span class="auto-exec-pillar-label label-flow">EFICIÊNCIA & ESCALA</span>
                 <span style="color:var(--aoop-blue); font-weight:800; font-size:0.85rem;">01</span>
               </div>
               <h3 class="auto-exec-pillar-name">Horizon Flow</h3>
-              <div class="auto-exec-pillar-question">As automações estão entregando o resultado esperado?</div>
+              <div class="auto-exec-pillar-question">Entender não apenas se o Flow funciona, mas até onde ele pode escalar.</div>
               <div class="auto-exec-pillar-tags">
                 <span class="auto-exec-pillar-tag">Volume</span>
-                <span class="auto-exec-pillar-tag">SLA</span>
                 <span class="auto-exec-pillar-tag">Eficiência</span>
-                <span class="auto-exec-pillar-tag">Valor</span>
+                <span class="auto-exec-pillar-tag">Qualidade</span>
+                <span class="auto-exec-pillar-tag" style="background: rgba(0,146,213,0.25); color: #ffffff; border-color: var(--aoop-blue);">Scalability</span>
               </div>
               <p class="auto-exec-pillar-desc">
-                Centraliza a visão de execução dos flows e permite mensurar performance, eficiência operacional e valor
-                agregado.
+                Centraliza a visão de execução dos flows e identifica o potencial de reutilização e escala de cada automação (Case Specific → Global Ready).
               </p>
             </div>
             <div class="auto-exec-pillar-btn">
@@ -6524,15 +6713,54 @@
           <!-- 1. DASHBOARD HORIZON FLOW (REORDENADO COM SPLIT LAYOUT) -->
           <div id="dash-content-flow" class="dash-view-content">
 
-            <!-- PRIMEIRA LINHA: CARDS DE KPIS -->
-            <div class="modal-kpi-grid">
+            <!-- BANNER EXECUTIVO & MENSAGEM DO MÓDULO -->
+            <div style="background: linear-gradient(135deg, rgba(0, 146, 213, 0.14) 0%, rgba(10, 18, 29, 0.95) 100%); border: 1px solid rgba(0, 146, 213, 0.35); border-radius: 14px; padding: 1.25rem 1.5rem; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; box-shadow: 0 8px 24px rgba(0,0,0,0.3);">
+              <div>
+                <div style="font-size: 0.72rem; font-weight: 800; color: var(--aoop-yellow); text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 4px;">
+                  MÁXIMO VALOR DE AUTOMAÇÃO · PERFORMANCE + QUALITY + SCALABILITY
+                </div>
+                <h3 style="font-size: 1.15rem; font-weight: 900; color: #ffffff; margin: 0 0 6px 0;">
+                  Entender não apenas se o Flow funciona, mas até onde ele pode escalar.
+                </h3>
+                <p style="font-size: 0.82rem; color: var(--text-muted); margin: 0; line-height: 1.45;">
+                  <span style="color: var(--aoop-blue); font-weight: 700;">Da visibilidade da execução à automação escalável:</span> Automation Suite permite identificar quais automações devem permanecer específicas e quais possuem potencial para se tornar ativos reutilizáveis da plataforma.
+                </p>
+              </div>
+            </div>
+
+            <!-- 4 DIMENSÕES DE ANÁLISE DO HORIZON FLOW -->
+            <div class="flow-dimensions-grid">
+              <div class="flow-dimension-card">
+                <div class="flow-dim-tag" style="color: var(--aoop-blue);">01 · EXECUTION</div>
+                <div class="flow-dim-question">Quanto estamos executando?</div>
+                <div class="flow-dim-desc">Volume total de requisições, jobs agendados e fluxos operando.</div>
+              </div>
+              <div class="flow-dimension-card">
+                <div class="flow-dim-tag" style="color: #38bdf8;">02 · QUALITY</div>
+                <div class="flow-dim-question">As execuções funcionam bem?</div>
+                <div class="flow-dim-desc">Taxa de sucesso sem erros, resiliência e aderência aos SLAs operacionais.</div>
+              </div>
+              <div class="flow-dimension-card">
+                <div class="flow-dim-tag" style="color: var(--aoop-yellow);">03 · PERFORMANCE</div>
+                <div class="flow-dim-question">Executamos com eficiência?</div>
+                <div class="flow-dim-desc">Tempo de resposta, eficiência de processamento e valor financeiro gerado.</div>
+              </div>
+              <div class="flow-dimension-card" style="border-color: rgba(52, 211, 153, 0.4); background: rgba(52, 211, 153, 0.05);">
+                <div class="flow-dim-tag" style="color: #34d399;">04 · SCALABILITY</div>
+                <div class="flow-dim-question">Pode ser reutilizada/escalada?</div>
+                <div class="flow-dim-desc">Maturidade arquitetural para expansão entre serviços e reutilização global.</div>
+              </div>
+            </div>
+
+            <!-- PRIMEIRA LINHA: CARDS DE KPIS (5 KPIS INCLUINDO SCALE READY+) -->
+            <div class="modal-kpi-grid" style="grid-template-columns: repeat(5, 1fr); gap: 1rem; margin-bottom: 1.25rem;">
               <div class="modal-kpi-card">
                 <div class="modal-kpi-title">Fluxos Monitorados</div>
                 <div class="modal-kpi-val">312</div>
                 <div class="modal-kpi-sub">100% no ServiceNow</div>
               </div>
               <div class="modal-kpi-card">
-                <div class="modal-kpi-title">Índice de Eficiência Geral</div>
+                <div class="modal-kpi-title">Índice de Eficiência</div>
                 <div class="modal-kpi-val">96.8%</div>
                 <div class="modal-kpi-sub">Eficácia dentro do SLA</div>
               </div>
@@ -6544,7 +6772,53 @@
               <div class="modal-kpi-card">
                 <div class="modal-kpi-title">Valor Agregado Total</div>
                 <div class="modal-kpi-val">R$ 3.42M</div>
-                <div class="modal-kpi-sub">Calculado por Business Units</div>
+                <div class="modal-kpi-sub">Calculado por BUs</div>
+              </div>
+              <div class="modal-kpi-card" style="border-color: rgba(52, 211, 153, 0.4); background: rgba(52, 211, 153, 0.06);">
+                <div class="modal-kpi-title" style="color: #34d399;">Scale Ready+</div>
+                <div class="modal-kpi-val" style="color: #34d399;">38%</div>
+                <div class="modal-kpi-sub" style="color: #a7f3d0;">Prontos / Reutilizados</div>
+              </div>
+            </div>
+
+            <!-- VISÃO AGREGADA DE DISTRIBUIÇÃO DE MATURIDADE DO PORTFÓLIO (FLOW SCALABILITY) -->
+            <div class="scale-maturity-container">
+              <div class="scale-mat-head">
+                <span class="scale-mat-title">
+                  <i class="ph ph-chart-line-up" style="color: var(--aoop-blue);"></i> Flow Scalability · Distribuição de Maturidade do Portfólio (312 Flows)
+                </span>
+                <span style="font-size: 0.72rem; font-weight: 800; color: #34d399; background: rgba(52, 211, 153, 0.12); padding: 3px 10px; border-radius: 6px; border: 1px solid rgba(52, 211, 153, 0.3);">
+                  38% Scale Ready+ (Capacidade Concreta de Expansão)
+                </span>
+              </div>
+              <div class="scale-mat-bar">
+                <div class="scale-mat-seg" style="width: 32%; background: #94a3b8;" title="Case Specific: 32% (100 flows)"></div>
+                <div class="scale-mat-seg" style="width: 30%; background: #38bdf8;" title="Scale Potential: 30% (94 flows)"></div>
+                <div class="scale-mat-seg" style="width: 20%; background: #0092D5;" title="Scale Ready: 20% (62 flows)"></div>
+                <div class="scale-mat-seg" style="width: 12%; background: #818cf8;" title="Multi-Service: 12% (38 flows)"></div>
+                <div class="scale-mat-seg" style="width: 6%; background: #34d399;" title="Global Ready: 6% (18 flows)"></div>
+              </div>
+              <div class="scale-mat-legend">
+                <div class="scale-mat-item">
+                  <span class="scale-badge case-specific" style="pointer-events:none;">Case Specific</span>
+                  <span style="color: #cbd5e1;">32% (100 flows)</span>
+                </div>
+                <div class="scale-mat-item">
+                  <span class="scale-badge scale-potential" style="pointer-events:none;">Scale Potential</span>
+                  <span style="color: #38bdf8;">30% (94 flows)</span>
+                </div>
+                <div class="scale-mat-item">
+                  <span class="scale-badge scale-ready" style="pointer-events:none;">Scale Ready</span>
+                  <span style="color: #0092D5;">20% (62 flows)</span>
+                </div>
+                <div class="scale-mat-item">
+                  <span class="scale-badge multi-service" style="pointer-events:none;">Multi-Service</span>
+                  <span style="color: #818cf8;">12% (38 flows)</span>
+                </div>
+                <div class="scale-mat-item">
+                  <span class="scale-badge global-ready" style="pointer-events:none;">Global Ready</span>
+                  <span style="color: #34d399;">6% (18 flows)</span>
+                </div>
               </div>
             </div>
 
@@ -6916,9 +7190,19 @@
             <div class="modal-split-grid">
               <!-- LADO ESQUERDO: TOP 10 FLOWS MAIS EXECUTADOS -->
               <div class="chart-box" style="margin-bottom: 0;">
-                <div class="chart-box-title">
+                <div class="chart-box-title" style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;">
                   <span>Top 10 Flows Mais Executados</span>
-                  <span style="font-size:0.72rem; color:var(--text-light);">Clique no flow para ver conexões</span>
+                  <div style="display:flex; align-items:center; gap:8px;">
+                    <select id="flow-scale-filter" onchange="filterFlowsByScale(this.value)" style="background: #08111e; color: #ffffff; border: 1px solid var(--border-accent); border-radius: 6px; padding: 3px 8px; font-size: 0.7rem; font-weight: 700; cursor: pointer; outline: none;">
+                      <option value="ALL">Todas as Scalabilities</option>
+                      <option value="Case Specific">Case Specific</option>
+                      <option value="Scale Potential">Scale Potential</option>
+                      <option value="Scale Ready">Scale Ready</option>
+                      <option value="Multi-Service">Multi-Service</option>
+                      <option value="Global Ready">Global Ready</option>
+                    </select>
+                    <span style="font-size:0.72rem; color:var(--text-light);">Clique no flow para ver conexões</span>
+                  </div>
                 </div>
                 <table class="demo-table-large">
                   <thead>
@@ -6926,6 +7210,7 @@
                       <th>Nome do Flow</th>
                       <th>Volume</th>
                       <th>Eficiência</th>
+                      <th style="color:var(--aoop-blue);">Scalability</th>
                       <th>Time do Flow</th>
                       <th>Ações</th>
                     </tr>
@@ -6935,11 +7220,17 @@
                       <td><strong>Flow_Reset_Acessos_Multiplos</strong></td>
                       <td>12.840</td>
                       <td><span class="badge badge-success">99.4%</span></td>
+                      <td>
+                        <span class="scale-badge global-ready">
+                          Global Ready
+                          <span class="scale-tooltip">Está preparada para escalar globalmente.</span>
+                        </span>
+                      </td>
                       <td>Squad Identity</td>
                       <td><span style="font-size:0.78rem; color:var(--aoop-blue);">Estender ▾</span></td>
                     </tr>
                     <tr class="detail-row" style="display:none;">
-                      <td colspan="5">
+                      <td colspan="6">
                         <div class="expanded-detail-box">
                           <div>
                             <div class="detail-item-title">Conexão Ativa</div>
@@ -6962,11 +7253,17 @@
                       <td><strong>Flow_Onboarding_Colaboradores</strong></td>
                       <td>9.420</td>
                       <td><span class="badge badge-success">98.6%</span></td>
+                      <td>
+                        <span class="scale-badge multi-service">
+                          Multi-Service
+                          <span class="scale-tooltip">Já é reutilizada por mais de um serviço/caso.</span>
+                        </span>
+                      </td>
                       <td>Squad People Exp</td>
                       <td><span style="font-size:0.78rem; color:var(--aoop-blue);">Estender ▾</span></td>
                     </tr>
                     <tr class="detail-row" style="display:none;">
-                      <td colspan="5">
+                      <td colspan="6">
                         <div class="expanded-detail-box">
                           <div>
                             <div class="detail-item-title">Conexão Ativa</div>
@@ -6990,11 +7287,17 @@
                       <td><strong>Flow_Aprovacao_Alcadas_PTP</strong></td>
                       <td>8.110</td>
                       <td><span class="badge badge-success">97.2%</span></td>
+                      <td>
+                        <span class="scale-badge scale-ready">
+                          Scale Ready
+                          <span class="scale-tooltip">Pode ser escalada dentro das limitações atuais.</span>
+                        </span>
+                      </td>
                       <td>Squad PTP Ops</td>
                       <td><span style="font-size:0.78rem; color:var(--aoop-blue);">Estender ▾</span></td>
                     </tr>
                     <tr class="detail-row" style="display:none;">
-                      <td colspan="5">
+                      <td colspan="6">
                         <div class="expanded-detail-box">
                           <div>
                             <div class="detail-item-title">Conexão Ativa</div>
@@ -7018,11 +7321,17 @@
                       <td><strong>Flow_Emissao_Certidoes_Tax</strong></td>
                       <td>6.450</td>
                       <td><span class="badge badge-success">96.8%</span></td>
+                      <td>
+                        <span class="scale-badge case-specific">
+                          Case Specific
+                          <span class="scale-tooltip">Criada para um caso específico, sem avaliação de escala.</span>
+                        </span>
+                      </td>
                       <td>Squad Tax Tech</td>
                       <td><span style="font-size:0.78rem; color:var(--aoop-blue);">Estender ▾</span></td>
                     </tr>
                     <tr class="detail-row" style="display:none;">
-                      <td colspan="5">
+                      <td colspan="6">
                         <div class="expanded-detail-box">
                           <div>
                             <div class="detail-item-title">Conexão Ativa</div>
@@ -7045,11 +7354,17 @@
                       <td><strong>Flow_Conciliacao_Financeira_Mesh</strong></td>
                       <td>5.980</td>
                       <td><span class="badge badge-success">98.1%</span></td>
+                      <td>
+                        <span class="scale-badge scale-potential">
+                          Scale Potential
+                          <span class="scale-tooltip">Funciona bem e tem potencial de escala, mas ainda não está preparada.</span>
+                        </span>
+                      </td>
                       <td>Squad Finance Mesh</td>
                       <td><span style="font-size:0.78rem; color:var(--aoop-blue);">Estender ▾</span></td>
                     </tr>
                     <tr class="detail-row" style="display:none;">
-                      <td colspan="5">
+                      <td colspan="6">
                         <div class="expanded-detail-box">
                           <div>
                             <div class="detail-item-title">Conexão Ativa</div>
@@ -7072,11 +7387,17 @@
                       <td><strong>Flow_Rastreamento_LOG</strong></td>
                       <td>5.420</td>
                       <td><span class="badge badge-success">95.4%</span></td>
+                      <td>
+                        <span class="scale-badge scale-ready">
+                          Scale Ready
+                          <span class="scale-tooltip">Pode ser escalada dentro das limitações atuais.</span>
+                        </span>
+                      </td>
                       <td>Squad Logistics</td>
                       <td><span style="font-size:0.78rem; color:var(--aoop-blue);">Estender ▾</span></td>
                     </tr>
                     <tr class="detail-row" style="display:none;">
-                      <td colspan="5">
+                      <td colspan="6">
                         <div class="expanded-detail-box">
                           <div>
                             <div class="detail-item-title">Conexão Ativa</div>
@@ -7099,11 +7420,17 @@
                       <td><strong>Flow_Notificacao_Manutencao</strong></td>
                       <td>4.890</td>
                       <td><span class="badge badge-success">99.1%</span></td>
+                      <td>
+                        <span class="scale-badge multi-service">
+                          Multi-Service
+                          <span class="scale-tooltip">Já é reutilizada por mais de um serviço/caso.</span>
+                        </span>
+                      </td>
                       <td>Squad Infra Ops</td>
                       <td><span style="font-size:0.78rem; color:var(--aoop-blue);">Estender ▾</span></td>
                     </tr>
                     <tr class="detail-row" style="display:none;">
-                      <td colspan="5">
+                      <td colspan="6">
                         <div class="expanded-detail-box">
                           <div>
                             <div class="detail-item-title">Conexão Ativa</div>
@@ -7126,11 +7453,17 @@
                       <td><strong>Flow_Validacao_Notas_TAX</strong></td>
                       <td>4.120</td>
                       <td><span class="badge badge-success">96.0%</span></td>
+                      <td>
+                        <span class="scale-badge case-specific">
+                          Case Specific
+                          <span class="scale-tooltip">Criada para um caso específico, sem avaliação de escala.</span>
+                        </span>
+                      </td>
                       <td>Squad Tax Tech</td>
                       <td><span style="font-size:0.78rem; color:var(--aoop-blue);">Estender ▾</span></td>
                     </tr>
                     <tr class="detail-row" style="display:none;">
-                      <td colspan="5">
+                      <td colspan="6">
                         <div class="expanded-detail-box">
                           <div>
                             <div class="detail-item-title">Conexão Ativa</div>
@@ -7154,11 +7487,17 @@
                       <td><strong>Flow_Atualizacao_Cadastral</strong></td>
                       <td>3.850</td>
                       <td><span class="badge badge-success">97.8%</span></td>
+                      <td>
+                        <span class="scale-badge scale-potential">
+                          Scale Potential
+                          <span class="scale-tooltip">Funciona bem e tem potencial de escala, mas ainda não está preparada.</span>
+                        </span>
+                      </td>
                       <td>Squad People Exp</td>
                       <td><span style="font-size:0.78rem; color:var(--aoop-blue);">Estender ▾</span></td>
                     </tr>
                     <tr class="detail-row" style="display:none;">
-                      <td colspan="5">
+                      <td colspan="6">
                         <div class="expanded-detail-box">
                           <div>
                             <div class="detail-item-title">Conexão Ativa</div>
@@ -7181,11 +7520,17 @@
                       <td><strong>Flow_Fechamento_Contabil</strong></td>
                       <td>3.210</td>
                       <td><span class="badge badge-success">98.9%</span></td>
+                      <td>
+                        <span class="scale-badge scale-ready">
+                          Scale Ready
+                          <span class="scale-tooltip">Pode ser escalada dentro das limitações atuais.</span>
+                        </span>
+                      </td>
                       <td>Squad Finance Core</td>
                       <td><span style="font-size:0.78rem; color:var(--aoop-blue);">Estender ▾</span></td>
                     </tr>
                     <tr class="detail-row" style="display:none;">
-                      <td colspan="5">
+                      <td colspan="6">
                         <div class="expanded-detail-box">
                           <div>
                             <div class="detail-item-title">Conexão Ativa</div>
@@ -13771,6 +14116,23 @@
       if (el) {
         el.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
+    }
+
+    function filterFlowsByScale(scaleStatus) {
+      const rows = document.querySelectorAll('#dash-content-flow .demo-table-large tbody tr.expandable-row');
+      rows.forEach(row => {
+        const detailRow = row.nextElementSibling;
+        const badge = row.querySelector('.scale-badge');
+        const badgeText = badge ? badge.childNodes[0].textContent.trim() : '';
+        if (scaleStatus === 'ALL' || badgeText === scaleStatus) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+          if (detailRow && detailRow.classList.contains('detail-row')) {
+            detailRow.style.display = 'none';
+          }
+        }
+      });
     }
   </script>
 </body>
